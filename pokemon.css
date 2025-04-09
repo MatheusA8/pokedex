@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: url('https://img.freepik.com/vetores-gratis/fundo-de-efeito-de-zoom-gradiente_23-2149722799.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  header {
+    padding: 40px 20px 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 3.5rem;
+    color: #ffcb05;
+    text-shadow: 3px 3px #2a75bb;
+  }
+  
+  .search-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  input {
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    width: 250px;
+    outline: none;
+  }
+  
+  button {
+    padding: 12px 16px;
+    background: #ffcb05;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background: #ffdd33;
+  }
+  
+  #pokedex, #favoritosContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(15px);
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    animation: aparecer 0.5s ease forwards, flutuar 2.5s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 0 25px #ffcb05;
+  }
+  
+  .card img {
+    width: 120px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover img {
+    transform: scale(1.1);
+  }
+  
+  .card h2 {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 1px 1px 3px #000;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    color: #ffd;
+    text-shadow: 1px 1px 2px #000;
+  }
+  
+  .favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+  }
+  
+  .favorite-btn.favorited {
+    background: red;
+    color: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px red;
+  }
+  
+  .favorite-btn:hover {
+    transform: scale(1.2);
+    background: #ffe;
+  }
+  
+  .remover-btn {
+    margin-top: 10px;
+    background: #ff5555;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .remover-btn:hover {
+    background: #ff2222;
+  }
+  
+  .center-btn {
+    margin-top: 20px;
+  }
+  
+  @keyframes aparecer {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes flutuar {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  

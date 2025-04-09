@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokédex Ultra</title>
+  <link rel="stylesheet" href="pokemon.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Pokédex Ultra</h1>
+    <div class="search-container">
+      <input type="text" id="pokemonInput" placeholder="Digite o nome ou número" />
+      <button id="searchBtn">Buscar</button>
+      <button id="clearBtn">Limpar Tudo</button>
+      <button onclick="window.location.href='favoritos.html'">❤️ Ver Favoritos</button>
+    </div>
+  </header>
+
+  <main id="pokedex"></main>
+
+  <audio id="pokeballSound" src="https://vgmsite.com/soundtracks/pokemon-gameboy-sound-collection/yvvoanql/132-opening%20%28pokemon%20caught%29.mp3" preload="auto"></audio>
+
+  <script src="pokedex.js"></script>
+</body>
+</html>

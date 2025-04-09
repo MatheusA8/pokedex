@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favoritos</title>
+  <link rel="stylesheet" href="pokemon.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Pokémons Favoritos</h1>
+    <div class="center-btn">
+      <button onclick="window.location.href='pokedex.html'">Voltar para Pokédex</button>
+    </div>
+  </header>
+
+  <main id="favoritosContainer"></main>
+
+  <script>
+    const container = document.getElementById("favoritosContainer");
+    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+    const getPokemon = async (name) => {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      return await res.json();
+    };
+
+    const renderFavoritos = async () => {
+      container.innerHTML = "";
+      for (const nome of favoritos) {
+        const pokemon = await getPokemon(nome);
+        const tipos = pokemon.types.map(t => t.type.name).join(', ');
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+          <h2>${pokemon.name}</h2>
+          <p>Tipo: ${tipos}</p>
+          <button class="remover-btn" data-name="${pokemon.name}">Remover ❌</button>
+        `;
+        container.appendChild(card);
+      }
+
+      document.querySelectorAll('.remover-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const name = e.target.dataset.name;
+          const index = favoritos.indexOf(name);
+          if (index !== -1) {
+            favoritos.splice(index, 1);
+            localStorage.setItem("favoritos", JSON.stringify(favoritos));
+            renderFavoritos();
+          }
+        });
+      });
+    };
+
+    renderFavoritos();
+  </script>
+</body>
+</html>
